@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>weather dashboard<i class="fas fa-cloud-sun"></i></h1>
+    </header>
+    <main>
+         <div class="current-city center-text">
+            <h2>(City)</h2>
+            <h3>Temperature:</h2>
+            <h3>Humidity:</h3>
+            <h3>Wind Speed:</h3>
+            <h3>UV Index:</h3> 
+        </div>
+        <div class="city-search">
+            <input type="text" id="input" placeholder="Which City?">
+            <button onclick="renderButtons()" type="submit" value="Submit"><i class="fas fa-search"></i></button>
+        <section id="buttons" class="section">
+        </section>
+        </div>
+       
+
+    </main>
+<script src="index.js"></script>
+</body>
+
+</html>

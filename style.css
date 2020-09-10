@@ -1,0 +1,52 @@
+body {
+    font-family:'David Libre', serif;
+    color: rgb(54, 51, 51);
+    background-color: rgb(240, 240, 240);
+}
+
+header {
+    background-color: rgb(100, 201, 201);
+    padding: 10px;
+}
+
+.center-text {
+    text-align: center;
+    font-size: 30px;
+}
+
+.city-search{
+    width: 21%;
+    float: left;
+    padding: 20px;
+}
+
+    .city-search input[type=text] {
+        padding: 10px;
+        font-size: 20px;
+        font-family:'David Libre', serif;
+        }
+
+    .city-search button {
+        padding: 10px;
+        font-size: 20px;;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: rgb(100, 201, 201);
+        border: none;
+        cursor: pointer;
+        }
+    .city-search section {
+        height: 400px;
+    }
+
+.current-city {
+        border: solid;
+        width: 70%;
+        float: left;
+        margin-top: 10px;;
+}
+
+.section button {
+        width: 300px;
+        font-family:'David Libre', serif;
+}
