@@ -1,28 +1,48 @@
-var cities = ["Los Angeles", "Chicago", "New York"];
+var cities = ["New York", "Chicago", "Los Angeles"];
 
-for (var i = 0; i < cities.length; i++) {
 
-var searchedCity = document.createElement("BUTTON");
-var textn
-document.getElementById("buttons").append(searchedCity, cities[i]);
+function displayWeatherInfo() {
 
+    var city = $(this).attr("data-name");
+    var queryURL = "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b"
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        console.log(response)
+    })
+}
+
+function renderCityButtons() {
+
+    $("#buttons").empty();
+    for (var i = 0; i < cities.length; i++) {
+
+        var a = $("<button>");
+        a.addClass("cityClass");
+        a.attr("data-name", cities[i]);
+        a.text(cities[i]);
+        $("#buttons").append(a);
+    }
 }
 
 
-function renderButtons() {
+$("#submit-city").on("click", function (event) {
+    event.preventDefault();
+    var city = $("#input").val().trim();
 
-    
-        // var usersCity = document.getElementById("input").value;
+    cities.push(city)
 
-        // cities.push(usersCity)
+    renderCityButtons();
+    displayWeatherInfo();
+})
 
-        
-
-       
-
-       
-
+renderCityButtons();
 
 
-    }
+
+
+
+
 
