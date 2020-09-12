@@ -12,7 +12,7 @@ function displayWeatherInfo(city) {
         var temperature = response.main.temp
         var fTemp = (temperature - 273.15) * 9 / 5 + 32
         var cityName = response.name
-        localStorage.setItem("button",cityName)
+        localStorage.setItem(cities ,cityName)
 
         $(".current-city").empty();
         $(".current-city").append(`
@@ -52,4 +52,4 @@ $("#buttons").on("click", "button", function () {
     displayWeatherInfo($(this).text());
 })
 
-localStorage.getItem("button")
+localStorage.getItem(cities)
