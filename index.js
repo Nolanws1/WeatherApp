@@ -20,7 +20,7 @@ function displayWeatherInfo(city) {
             <h3>Temperature: ${Math.round(fTemp)}°F</h2>
             <h3>Humidity: ${response.main.humidity}%</h3>
             <h3>Wind Speed: ${response.wind.speed}mph</h3>
-            <h3>UV Index ${response}:</h3> `)
+            <h3>UV Index:</h3> `)
     })
 }
 
