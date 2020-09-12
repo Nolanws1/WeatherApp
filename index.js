@@ -3,7 +3,7 @@ var cities = [];
 
 function displayWeatherInfo(city) {
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b"
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b"
     $.ajax({
         url: queryURL,
         method: "GET"
