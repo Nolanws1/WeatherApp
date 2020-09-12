@@ -52,3 +52,4 @@ $("#buttons").on("click", "button", function () {
     displayWeatherInfo($(this).text());
 })
 
+localStorage.getItem("button")
