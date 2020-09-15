@@ -3,10 +3,10 @@ var cities = [];
 function displayWeatherInfo(city) {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b"
-    var queryURLForcast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b"
-    
-    
-    
+    var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b"
+
+
+
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -16,7 +16,7 @@ function displayWeatherInfo(city) {
         var fTemp = (temperature - 273.15) * 9 / 5 + 32
         var cityName = response.name
         var cityNameButton = JSON.stringify(cityName);
-        localStorage.setItem(cities ,cityNameButton)
+        localStorage.setItem(cities, cityNameButton)
         $(".current-city").empty();
         $(".current-city").append(`
             <h2>${cityName}</h2>
@@ -25,12 +25,68 @@ function displayWeatherInfo(city) {
             <h3>Wind Speed: ${response.wind.speed}mph</h3>
             <h3>UV Index:</h3> `)
     })
-
     $.ajax({
-        url: queryURLForcast,
+        url: queryURLForecast,
         method: "GET"
-    }).then(function (responseForcast){
-        console.log(responseForcast)
+    }).then(function (responseForecast) {
+        var temperature1 = responseForecast.list[6].main.temp
+        var temperature2 = responseForecast.list[14].main.temp
+        var temperature3 = responseForecast.list[22].main.temp
+        var temperature4 = responseForecast.list[30].main.temp
+        var temperature5 = responseForecast.list[38].main.temp
+        var fTemp1 = (temperature1 - 273.15) * 9 / 5 + 32
+        var fTemp2 = (temperature2 - 273.15) * 9 / 5 + 32
+        var fTemp3 = (temperature3 - 273.15) * 9 / 5 + 32
+        var fTemp4 = (temperature4 - 273.15) * 9 / 5 + 32
+        var fTemp5 = (temperature5 - 273.15) * 9 / 5 + 32
+        var date1 = responseForecast.list[6].dt_txt;
+        var date2 = responseForecast.list[14].dt_txt;
+        var date3 = responseForecast.list[22].dt_txt;
+        var date4 = responseForecast.list[30].dt_txt;
+        var date5 = responseForecast.list[38].dt_txt;
+        var displayDate1 = date1.slice(5, 10);
+        var displayDate2 = date2.slice(5, 10);
+        var displayDate3 = date3.slice(5, 10);
+        var displayDate4 = date4.slice(5, 10);
+        var displayDate5 = date5.slice(5, 10);
+        
+        console.log(responseForecast)
+        $(".five-day1").empty();
+        $(".five-day1").append(`
+            <img src=http://openweathermap.org/img/wn/${responseForecast.list[6].weather[0].icon}@2x.png>
+            <h2>${displayDate1}</h2>
+            <h3>Temp: ${Math.round(fTemp1)}°F</h3>
+            <h3> Humidity: ${responseForecast.list[6].main.humidity}%</h3>
+        `)
+        $(".five-day2").empty();
+        $(".five-day2").append(`
+            <img src=http://openweathermap.org/img/wn/${responseForecast.list[14].weather[0].icon}@2x.png>
+            <h2>${displayDate2}<h2>
+            <h3>Temp: ${Math.round(fTemp2)}°F</h3>
+            <h3> Humidity: ${responseForecast.list[14].main.humidity}%</h3>
+        `)
+        $(".five-day3").empty();
+        $(".five-day3").append(`
+            <img src=http://openweathermap.org/img/wn/${responseForecast.list[22].weather[0].icon}@2x.png>
+            <h2>${displayDate3}</h2>
+            <h3>Temp: ${Math.round(fTemp3)}°F</h3>
+            <h3> Humidity: ${responseForecast.list[22].main.humidity}%</h3>
+        `)
+        $(".five-day4").empty();
+        $(".five-day4").append(`
+            <img src=http://openweathermap.org/img/wn/${responseForecast.list[30].weather[0].icon}@2x.png>
+            <h2>${displayDate4}</h2>
+            <h3>Temp: ${Math.round(fTemp4)}°F</h3>
+            <h3> Humidity: ${responseForecast.list[30].main.humidity}%</h3>
+        `)
+        $(".five-day5").empty();
+        $(".five-day5").append(`
+        <img src=http://openweathermap.org/img/wn/${responseForecast.list[38].weather[0].icon}@2x.png>
+            <h2>${displayDate5}</h2>
+            <h3>Temp: ${Math.round(fTemp5)}°F</h3>
+            <h3> Humidity: ${responseForecast.list[38].main.humidity}%</h3>
+        `)
+
     })
 
 
@@ -44,7 +100,7 @@ function renderCityButtons() {
         a.addClass("cityClass");
         a.attr("data-name", cities[i]);
         a.text(cities[i]);
-        $("#buttons").append(a); 
+        $("#buttons").append(a);
     }
 }
 

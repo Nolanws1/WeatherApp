@@ -14,10 +14,16 @@ header {
     font-size: 30px;
 }
 
+.center {
+    text-align: center;
+}
+
+
 .city-search{
     width: 21%;
     float: left;
     padding: 20px;
+    height: 370px;
 }
 
     .city-search input[type=text] {
@@ -57,10 +63,86 @@ header {
         height: 400px;
 }
 
-.five-day { 
-        border: solid;
-        height: 20px;
-        width: 70%;
-        float:left;
+.forecast {
         clear:both;
+        height: 250px;
+        width: 70%;
 }
+
+.five-day1 { 
+    
+    background-color: rgb(100, 201, 201);
+    width: 19.1%;
+    height: 167px;
+    float: left;
+    margin-left: 8px;
+    margin-top: 8px;
+    
+}
+    .five-day1 img {
+        width: 90px;
+        height: 90px;
+        float: right;
+    }
+
+.five-day2 { 
+    
+    background-color: rgb(100, 201, 201);
+    width: 19.1%;
+    height: 167px;
+    float: left;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+    .five-day2 img {
+        width: 90px;
+        height: 90px;
+        float: right;
+
+    }
+
+.five-day3 { 
+    
+    background-color: rgb(100, 201, 201);
+    width: 19.1%;
+    height: 167px;
+    float: left;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+    .five-day3 img {
+        width: 90px;
+        height: 90px;
+        float: right;
+    }
+
+.five-day4 { 
+    
+    background-color: rgb(100, 201, 201);
+    width: 19.1%;
+    height: 167px;
+    float: left;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+    .five-day4 img {
+        width: 90px;
+        height: 90px;
+        float: right;
+    }
+
+
+.five-day5 { 
+    
+    background-color: rgb(100, 201, 201);
+    width: 19.1%;
+    height: 167px;
+    float: left;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+.five-day5 img {
+        width: 90px;
+        height: 90px;
+        float: right;
+    }
