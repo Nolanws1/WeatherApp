@@ -38,6 +38,17 @@ header {
         height: 400px;
     }
 
+    .section button {
+        width: 300px;
+        font-family:'David Libre', serif;
+    }
+    
+     .section {
+        width: 300px;
+        height: 800px;
+    }
+
+
 .current-city {
         border: solid;
         width: 70%;
@@ -46,7 +57,10 @@ header {
         height: 400px;
 }
 
-.section button {
-        width: 300px;
-        font-family:'David Libre', serif;
+.five-day { 
+        border: solid;
+        height: 20px;
+        width: 70%;
+        float:left;
+        clear:both;
 }
