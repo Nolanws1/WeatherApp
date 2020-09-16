@@ -2,28 +2,49 @@ var cities = [];
 
 function displayWeatherInfo(city) {
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b"
-    var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b"
-
-
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b";
+    var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b";
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        var queryURLUV = "https://api.openweathermap.org/data/2.5/uvi/forecast?appid=34d64e7f0ea3fec2362c6a680ab02a2b&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
         console.log(response)
         var temperature = response.main.temp
         var fTemp = (temperature - 273.15) * 9 / 5 + 32
         var cityName = response.name
         var cityNameButton = JSON.stringify(cityName);
         localStorage.setItem(cities, cityNameButton)
-        $(".current-city").empty();
-        $(".current-city").append(`
-            <h2>${cityName}</h2>
-            <h3>Temperature: ${Math.round(fTemp)}°F</h2>
-            <h3>Humidity: ${response.main.humidity}%</h3>
-            <h3>Wind Speed: ${response.wind.speed}mph</h3>
-            <h3>UV Index:</h3> `)
+        $.ajax({
+            url: queryURLUV,
+            method: "GET"
+        }).then(function (responseUV) {
+            console.log(responseUV)
+            var UV = responseUV[0].value
+            $(".current-city").empty();
+            $(".current-city").append(`
+                <h2>${cityName} <img src=http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png> </h2>
+                <h3>Temperature: ${Math.round(fTemp)}°F</h2>
+                <h3>Humidity: ${response.main.humidity}%</h3>
+                <h3>Wind Speed: ${response.wind.speed}mph</h3>
+                <h4>UV Index: <mark>${UV}</mark></h4>
+                `)
+            if(UV < 5.9) {
+                console.log("moderate")
+                $("mark").addClass("moderate")
+            }
+            if(UV > 5.9 && UV < 7.9){
+                console.log("high")
+                $("mark").addClass("high")
+            }
+            if(UV > 7.9){
+                console.log("very high")
+                $("mark").addClass("very-high")
+            }
+
+
+        })
     })
     $.ajax({
         url: queryURLForecast,
@@ -49,7 +70,7 @@ function displayWeatherInfo(city) {
         var displayDate3 = date3.slice(5, 10);
         var displayDate4 = date4.slice(5, 10);
         var displayDate5 = date5.slice(5, 10);
-        
+
         console.log(responseForecast)
         $(".five-day1").empty();
         $(".five-day1").append(`
@@ -88,8 +109,6 @@ function displayWeatherInfo(city) {
         `)
 
     })
-
-
 
 }
 

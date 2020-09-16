@@ -63,6 +63,13 @@ header {
         height: 400px;
 }
 
+    .current-city img {
+        margin-bottom: -10px;
+        background-color: rgb(100, 201, 201);
+        height: 50px;
+        width: 50px;
+    }
+
 .forecast {
         clear:both;
         height: 250px;
@@ -141,8 +148,20 @@ header {
     margin-left: 8px;
     margin-top: 8px;
 }
-.five-day5 img {
+    .five-day5 img {
         width: 90px;
         height: 90px;
         float: right;
     }
+
+.moderate {
+    background-color: rgb(159, 236, 159);
+}
+
+.high {
+    background-color: rgb(241, 190, 93);
+}
+
+.very-high{
+    background-color: rgb(233, 88, 88);
+}
