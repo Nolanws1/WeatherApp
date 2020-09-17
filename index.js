@@ -1,4 +1,5 @@
-var cities = [];
+var cities = JSON.parse( window.localStorage.getItem('cities')) || [];
+
 
 function displayWeatherInfo(city) {
 
@@ -13,7 +14,9 @@ function displayWeatherInfo(city) {
         var temperature = response.main.temp
         var fTemp = (temperature - 273.15) * 9 / 5 + 32
         var cityName = response.name
-        window.localStorage.setItem("cities", JSON.stringify(cities))
+        var savedCities = JSON.parse( window.localStorage.getItem('cities')) || []
+        savedCities.push(cityName)
+        window.localStorage.setItem("cities", JSON.stringify(savedCities))
         $.ajax({
             url: queryURLUV,
             method: "GET"
@@ -36,10 +39,18 @@ function displayWeatherInfo(city) {
             if(UV > 7.9){
                 $("mark").addClass("very-high")
             }
-
-
+            
         })
+                
     })
+    // .catch(function(error) {
+    //         console.log('ERROR--->', error);
+    //         $(".current-city").empty();
+    //         $(".current-city").append(`
+    //         <h2>${error.responseJSON.message}
+    //         `)
+    //       })
+
     $.ajax({
         url: queryURLForecast,
         method: "GET"
@@ -107,6 +118,7 @@ function displayWeatherInfo(city) {
 
 function renderCityButtons() {
     var cityButtons = JSON.parse( window.localStorage.getItem("cities") );
+    console.log(cityButtons)
     $("#buttons").empty();
     for (var i = 0; i < cities.length; i++) {
         var a = $("<button>");
@@ -116,13 +128,6 @@ function renderCityButtons() {
         $("#buttons").append(a);
     }
 
-    // for (var i = 0; i < cityButtons.length; i++) {
-    //     var b = $("<button>");
-    //     b.addClass("cityClass");
-    //     b.attr("data-name", cityButtons[i]);
-    //     b.text(cityButtons[i]);
-    //     $("#buttons").append(b);
-    // }
 }
 
 
