@@ -10,17 +10,14 @@ function displayWeatherInfo(city) {
         method: "GET"
     }).then(function (response) {
         var queryURLUV = "https://api.openweathermap.org/data/2.5/uvi/forecast?appid=34d64e7f0ea3fec2362c6a680ab02a2b&lat=" + response.coord.lat + "&lon=" + response.coord.lon;
-        console.log(response)
         var temperature = response.main.temp
         var fTemp = (temperature - 273.15) * 9 / 5 + 32
         var cityName = response.name
-        var cityNameButton = JSON.stringify(cityName);
-        localStorage.setItem(cities, cityNameButton)
+        window.localStorage.setItem("cities", JSON.stringify(cities))
         $.ajax({
             url: queryURLUV,
             method: "GET"
         }).then(function (responseUV) {
-            console.log(responseUV)
             var UV = responseUV[0].value
             $(".current-city").empty();
             $(".current-city").append(`
@@ -31,15 +28,12 @@ function displayWeatherInfo(city) {
                 <h4>UV Index: <mark>${UV}</mark></h4>
                 `)
             if(UV < 5.9) {
-                console.log("moderate")
                 $("mark").addClass("moderate")
             }
             if(UV > 5.9 && UV < 7.9){
-                console.log("high")
                 $("mark").addClass("high")
             }
             if(UV > 7.9){
-                console.log("very high")
                 $("mark").addClass("very-high")
             }
 
@@ -71,7 +65,6 @@ function displayWeatherInfo(city) {
         var displayDate4 = date4.slice(5, 10);
         var displayDate5 = date5.slice(5, 10);
 
-        console.log(responseForecast)
         $(".five-day1").empty();
         $(".five-day1").append(`
             <img src=http://openweathermap.org/img/wn/${responseForecast.list[6].weather[0].icon}@2x.png>
@@ -113,6 +106,7 @@ function displayWeatherInfo(city) {
 }
 
 function renderCityButtons() {
+    var cityButtons = JSON.parse( window.localStorage.getItem("cities") );
     $("#buttons").empty();
     for (var i = 0; i < cities.length; i++) {
         var a = $("<button>");
@@ -121,6 +115,14 @@ function renderCityButtons() {
         a.text(cities[i]);
         $("#buttons").append(a);
     }
+
+    // for (var i = 0; i < cityButtons.length; i++) {
+    //     var b = $("<button>");
+    //     b.addClass("cityClass");
+    //     b.attr("data-name", cityButtons[i]);
+    //     b.text(cityButtons[i]);
+    //     $("#buttons").append(b);
+    // }
 }
 
 
@@ -140,4 +142,5 @@ $("#buttons").on("click", "button", function () {
     displayWeatherInfo($(this).text());
 })
 
-document.getElementById("buttons").innerHTML = localStorage.getItem(cities)
+
+
