@@ -79,7 +79,7 @@ header {
 .five-day1 { 
     
     background-color: rgb(100, 201, 201);
-    width: 19.1%;
+    width: 19%;
     height: 167px;
     float: left;
     margin-left: 8px;
@@ -95,7 +95,7 @@ header {
 .five-day2 { 
     
     background-color: rgb(100, 201, 201);
-    width: 19.1%;
+    width: 19%;
     height: 167px;
     float: left;
     margin-left: 8px;
@@ -111,7 +111,7 @@ header {
 .five-day3 { 
     
     background-color: rgb(100, 201, 201);
-    width: 19.1%;
+    width: 19%;
     height: 167px;
     float: left;
     margin-left: 8px;
@@ -126,7 +126,7 @@ header {
 .five-day4 { 
     
     background-color: rgb(100, 201, 201);
-    width: 19.1%;
+    width: 19%;
     height: 167px;
     float: left;
     margin-left: 8px;
@@ -142,7 +142,7 @@ header {
 .five-day5 { 
     
     background-color: rgb(100, 201, 201);
-    width: 19.1%;
+    width: 19%;
     height: 167px;
     float: left;
     margin-left: 8px;
@@ -164,4 +164,49 @@ header {
 
 .very-high{
     background-color: rgb(233, 88, 88);
+}
+
+@media screen and (max-width: 1024px) {
+
+    .forecast {
+        width: 100%
+    }
+    .five-day1{
+        width: 30%;
+    }
+    .five-day2{
+        width: 30%;
+    }
+    .five-day3{
+        width: 30%;
+    }
+    .five-day4{
+        width: 30%;
+    }
+    .five-day5{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .current-city { width: 98%;
+    }
+    .forecast {
+        width: 97%
+    }
+    .five-day1{
+        width: 97%;
+    }
+    .five-day2{
+        width: 97%;
+    }
+    .five-day3{
+        width: 97%;
+    }
+    .five-day4{
+        width: 97%;
+    }
+    .five-day5{
+        width: 97%;
+    }
 }

@@ -1,11 +1,13 @@
 var cities = JSON.parse( window.localStorage.getItem('cities')) || [];
+var lastCity = cities[cities.length - 1];
+console.log(lastCity)
+
 
 
 function displayWeatherInfo(city) {
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b";
     var queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=34d64e7f0ea3fec2362c6a680ab02a2b";
-
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -14,9 +16,7 @@ function displayWeatherInfo(city) {
         var temperature = response.main.temp
         var fTemp = (temperature - 273.15) * 9 / 5 + 32
         var cityName = response.name
-        var savedCities = JSON.parse( window.localStorage.getItem('cities')) || []
-        savedCities.push(cityName)
-        window.localStorage.setItem("cities", JSON.stringify(savedCities))
+        
         $.ajax({
             url: queryURLUV,
             method: "GET"
@@ -120,7 +120,7 @@ function renderCityButtons() {
     var cityButtons = JSON.parse( window.localStorage.getItem("cities") );
     console.log(cityButtons)
     $("#buttons").empty();
-    for (var i = 0; i < cities.length; i++) {
+    for (var i = 0; i < 6 && i < cities.length; i++) {
         var a = $("<button>");
         a.addClass("cityClass");
         a.attr("data-name", cities[i]);
@@ -135,6 +135,9 @@ $("#submit-city").on("click", function (event) {
     event.preventDefault();
     var city = $("#input").val().trim();
     $("#input").val("");
+    var savedCities = JSON.parse( window.localStorage.getItem('cities')) || []
+        savedCities.push(city)
+        window.localStorage.setItem("cities", JSON.stringify(savedCities))
     cities.push(city)
     renderCityButtons();
     displayWeatherInfo(city);
@@ -146,6 +149,4 @@ $("#buttons").on("click", "button", function () {
 
     displayWeatherInfo($(this).text());
 })
-
-
 
