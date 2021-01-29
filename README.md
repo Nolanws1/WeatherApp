@@ -1,40 +1,43 @@
-# coding-weather
+# Weather App
 
-The purpose of this website is to provide the user with current weather and a weather forecast of the city the decide to search.
+## Description
+Basic weather dashboard that provides the user with temperature, windspeed, UV index, and five day forecast of inputed city. Saves user's city search history.
+    
+## Table of Contents 
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Technologies](#technologies)
+4. [Demo](#demo)
+5. [License](#license)
+6. [Contributing](#contributing)
+7. [Tests](#tests)
+8. [Questions](#questions)
+    
+## Installation
+Clone the repo and run from default browser OR visit deployed link.
 
-This projects features a single html page linked to a JS and a CSS:
+## Usage
+Visit the demo site <a src="https://nolanws1.github.io/coding-weather/">here</a> 
 
-The WEATHER DASHBOARD page contains a:
+## Technologies
+HTML, CSS, JavaScript
 
-Header title with the project title.
+## Demo
+<img src="./media/weather_dashboard.gif" alt="demo video">
 
-A section in which city weather information will pop up.
+## License 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+Copyright (c) 2020 Nolan Sanchez
+    
+## Contributing
+If you have suggestions, questions, or would like to contribute please reach out via email.
+    
+## Tests
+There are no specific guidelines for testing at this time. 
+    
+## Questions
+If you have any questions about the repo, you can email me at Nolanws@gmail.com. 
 
-A section with a text input box asking for a city.
+Visit my page: [Github](https://github.com/Nolanws1)
 
-A button for the user to submit their city.
-
-A section with 5 boxes that contain the information on the 5 day forecast of the searched cities weather.
-
-
-## Getting started and deployment
-
-
-This site can be accessed by clicking the link below...
-
-https://nolanws1.github.io/coding-weather/
-
-## Built With
-* HTML
-* CSS
-* JAVASCRIPT
-* <a rel="stylesheet" href="https://fonts.google.com/">Google Fonts</a>
-
-## Created by
-
-Nolan Sanchez / UCR Extension Program Coding Bootcamp Student
-
-## Screenshots
-
-<img src="screenshot1.png" alt="Screenshot of top half of HTML page">
-<img src="screenshot2.png" alt="Screenshot of top half of HTML page">
+Check out my portfolio: [Portfolio](https://nolanws1.github.io/portfolio/)
