@@ -17,7 +17,7 @@ Basic weather dashboard that provides the user with temperature, windspeed, UV i
 Clone the repo and run from default browser OR visit deployed link.
 
 ## Usage
-Visit the demo site <a src="https://nolanws1.github.io/coding-weather/">here</a> 
+Visit the demo site <a src="https://nolanws1.github.io/WeatherApp/">here</a> 
 
 ## Technologies
 HTML, CSS, JavaScript
